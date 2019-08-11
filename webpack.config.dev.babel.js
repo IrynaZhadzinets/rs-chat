@@ -9,7 +9,15 @@ import autoprefixer from 'autoprefixer';
 
 module.exports = {
   devtool: false,
-  entry: './src/app/index.js',
+  entry: {
+    main: [
+      '@babel/polyfill',
+      './src/app/index.js',
+      'bootstrap/dist/css/bootstrap.min.css',
+      './src/css/main.scss',
+    ],
+    bundle: ['jquery', 'popper.js', 'bootstrap'],
+  },
   output: {
     filename: '[name].js',
   },
@@ -80,7 +88,7 @@ module.exports = {
       Popper: ['popper.js', 'default'],
     }),
     new CopyWebpackPlugin([
-      { from: 'src/img', to: 'img' },
+      { from: 'src/images', to: 'image' },
     ]),
     new webpack.SourceMapDevToolPlugin({
       filename: '[name].js.map',
