@@ -7,7 +7,7 @@ class MessageList extends Component {
     const messageItem = messages.map(message => (
       <li key={message.id} className="messageItem">
         <div>{message.from}</div>
-        <div>{message.time}</div>
+        <div>{(new Date(message.time)).toLocaleString()}</div>
         <div>{message.message}</div>
       </li>
     ));
