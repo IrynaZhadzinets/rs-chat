@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AppWebSocket from './AppWebSocket';
 import MessageList from './MessageList';
+import Layout from './Layout';
 
 class App extends Component {
   constructor() {
@@ -24,9 +25,11 @@ class App extends Component {
   render() {
     const { messages } = this.state;
     return (
-      <div className="app">
-        <MessageList messages={messages}/>
-      </div>
+      <Layout>
+        <div className="chatContainer">
+          <MessageList messages={messages}/>
+        </div>
+      </Layout>
     );
   }
 }
