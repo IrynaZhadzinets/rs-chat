@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MessageNotification from './MessageNotification';
 import MessageForm from './MessageForm';
 import AppWebSocket from './AppWebSocket';
 import MessageList from './MessageList';
@@ -7,12 +8,14 @@ import Layout from './Layout';
 class App extends Component {
   constructor() {
     super();
-    this.socket = new AppWebSocket(this, 'ws://st-chat.shas.tel');
+    this.socket = new AppWebSocket(this, 'wss://wssproxy.herokuapp.com/');
     this.socket.connect();
 
     this.state = {
       messages: [],
     };
+
+    this.notification = new MessageNotification();
   }
 
   static scrollList() {
@@ -22,6 +25,9 @@ class App extends Component {
 
   addMessages(messages) {
     if (!messages.length) return;
+    /* if (messages.length > 10) {
+      messages.forEach(message => this.notification.demonstration(message));
+    } */
 
     this.setState({
       messages: this.state.messages.concat(messages),
