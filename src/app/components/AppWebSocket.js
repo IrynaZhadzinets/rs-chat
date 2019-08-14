@@ -7,6 +7,7 @@ class AppWebSocket {
     this.onError = this.onError.bind(this);
     this.onClose = this.onClose.bind(this);
     this.onMessage = this.onMessage.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   connect() {
@@ -17,8 +18,6 @@ class AppWebSocket {
     this.socket.onerror = this.onError;
     this.socket.onclose = this.onClose;
     this.socket.onmessage = this.onMessage;
-
-    global.console.log('1.5');
   }
 
   reconnect() {
@@ -31,7 +30,6 @@ class AppWebSocket {
 
   onOpen() {
     global.console.log('onOpen');
-    global.console.log('1.2');
     global.console.log(this.socket);
   }
 
@@ -49,6 +47,13 @@ class AppWebSocket {
     global.console.log('onMessage');
     const messages = JSON.parse(event.data).reverse();
     this.item.addMessages(messages);
+  }
+
+  sendMessage(obj) {
+    global.console.log('sendMessage');
+    const message = JSON.stringify(obj);
+    this.socket.send(message);
+    // this.item.sendMessage(message);
   }
 }
 

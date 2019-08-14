@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MessageForm from './MessageForm';
 import AppWebSocket from './AppWebSocket';
 import MessageList from './MessageList';
 import Layout from './Layout';
@@ -28,6 +29,7 @@ class App extends Component {
       <Layout>
         <div className="chatContainer">
           <MessageList messages={messages}/>
+          <MessageForm socket={this.socket}/>
         </div>
       </Layout>
     );
