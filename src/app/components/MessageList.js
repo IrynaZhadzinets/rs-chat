@@ -6,9 +6,9 @@ class MessageList extends Component {
     const { messages } = this.props;
     const messageItem = messages.map(message => (
       <li key={message.id} className="messageItem">
-        <div>{message.from}</div>
-        <div>{(new Date(message.time)).toLocaleString()}</div>
-        <div>{message.message}</div>
+        <div className="messageNickname">{message.from}</div>
+        <div className="messageText">{message.message}</div>
+        <div className="messageDatetime">{(new Date(message.time)).toLocaleString()}</div>
       </li>
     ));
 

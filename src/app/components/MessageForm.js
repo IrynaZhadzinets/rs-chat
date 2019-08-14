@@ -43,8 +43,10 @@ class MessageForm extends Component {
     return (
       <form
         onSubmit={this.handleSubmit}
+        className='sendMessageForm'
       >
         <input
+          className='sendMessageField'
           onChange={this.handleChange}
           value={this.state.message}
           placeholder='Enter your message'

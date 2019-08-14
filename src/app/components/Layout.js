@@ -6,7 +6,7 @@ const Layout = ({ children }) => (
     <header>
       <h3>Hello!</h3>
     </header>
-    <main>
+    <main className="chat">
       {children}
     </main>
     <footer>

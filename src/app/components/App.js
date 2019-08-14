@@ -15,12 +15,18 @@ class App extends Component {
     };
   }
 
+  static scrollList() {
+    const container = document.querySelector('.chatContainer');
+    container.scrollTop = container.scrollHeight;
+  }
+
   addMessages(messages) {
     if (!messages.length) return;
 
     this.setState({
-      messages: messages.concat(this.state.messages),
+      messages: this.state.messages.concat(messages),
     });
+    App.scrollList();
   }
 
   render() {
@@ -29,8 +35,8 @@ class App extends Component {
       <Layout>
         <div className="chatContainer">
           <MessageList messages={messages}/>
-          <MessageForm socket={this.socket}/>
         </div>
+        <MessageForm socket={this.socket}/>
       </Layout>
     );
   }
