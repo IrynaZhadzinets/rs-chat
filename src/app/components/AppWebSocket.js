@@ -2,6 +2,7 @@ class AppWebSocket {
   constructor(item, url) {
     this.item = item;
     this.url = url;
+    this.unsentMessages = [];
 
     this.onOpen = this.onOpen.bind(this);
     this.onError = this.onError.bind(this);
@@ -11,7 +12,6 @@ class AppWebSocket {
   }
 
   connect() {
-    global.console.log('connect');
     this.socket = new WebSocket(this.url);
 
     this.socket.onopen = this.onOpen;
@@ -21,7 +21,6 @@ class AppWebSocket {
   }
 
   reconnect() {
-    global.console.log('reconnect');
     this.socket.close();
     setTimeout(() => {
       this.connect();
@@ -29,31 +28,31 @@ class AppWebSocket {
   }
 
   onOpen() {
-    global.console.log('onOpen');
-    global.console.log(this.socket);
+    this.unsentMessages.forEach(message => this.socket.send(message));
+    this.unsentMessages = [];
   }
 
   onError() {
-    global.console.log('onError');
     this.reconnect();
   }
 
   onClose() {
-    global.console.log('onClose');
     this.reconnect();
   }
 
   onMessage(event) {
-    global.console.log('onMessage');
     const messages = JSON.parse(event.data).reverse();
     this.item.addMessages(messages);
   }
 
   sendMessage(obj) {
-    global.console.log('sendMessage');
     const message = JSON.stringify(obj);
-    this.socket.send(message);
-    // this.item.sendMessage(message);
+
+    if (this.socket.readyState === WebSocket.OPEN) {
+      this.socket.send(message);
+    } else {
+      this.unsentMessages.push(message);
+    }
   }
 }
 
