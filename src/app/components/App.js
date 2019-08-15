@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import MessageNotification from './MessageNotification';
+import MessageNotification from './MessageNotification';
 import MessageForm from './MessageForm';
 import AppWebSocket from './AppWebSocket';
 import MessageList from './MessageList';
@@ -15,7 +15,7 @@ class App extends Component {
       messages: [],
     };
 
-    // this.notification = new MessageNotification();
+    this.notification = new MessageNotification();
   }
 
   static scrollList() {
@@ -25,9 +25,9 @@ class App extends Component {
 
   addMessages(messages) {
     if (!messages.length) return;
-    /* if (messages.length > 10) {
+    if (messages.length < 10 && document.hidden) {
       messages.forEach(message => this.notification.demonstration(message));
-    } */
+    }
 
     this.setState({
       messages: this.state.messages.concat(messages),

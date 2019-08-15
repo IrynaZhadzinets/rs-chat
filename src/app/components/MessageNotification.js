@@ -1,4 +1,6 @@
-/* class MessageNotification {
+import nextId from 'react-id-generator';
+
+class MessageNotification {
   constructor() {
     this.icon = './src/images/avatar.png';
     this.status = 'default';
@@ -13,10 +15,10 @@
     });
   }
 
-  demonstration({ id, from, message }) {
+  demonstration({ from, message }) {
     if (this.status === 'granted' && document.hidden) {
       const config = {
-        tag: id,
+        tag: nextId(),
         body: message,
         dir: 'auto',
         icon: this.icon,
@@ -28,4 +30,4 @@
   }
 }
 
-export default MessageNotification; */
+export default MessageNotification;
