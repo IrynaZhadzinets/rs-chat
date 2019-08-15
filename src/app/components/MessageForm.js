@@ -20,7 +20,7 @@ class MessageForm extends Component {
     if (!text.length) return;
 
     this.socket.socket.sendMessage({
-      from: 'Nick',
+      from: localStorage.getItem('nickname'),
       message: text,
     });
   }

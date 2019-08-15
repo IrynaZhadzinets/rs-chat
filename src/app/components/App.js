@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MessageNotification from './MessageNotification';
+// import MessageNotification from './MessageNotification';
 import MessageForm from './MessageForm';
 import AppWebSocket from './AppWebSocket';
 import MessageList from './MessageList';
@@ -15,7 +15,7 @@ class App extends Component {
       messages: [],
     };
 
-    this.notification = new MessageNotification();
+    // this.notification = new MessageNotification();
   }
 
   static scrollList() {

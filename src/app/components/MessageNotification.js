@@ -1,4 +1,4 @@
-class MessageNotification {
+/* class MessageNotification {
   constructor() {
     this.icon = './src/images/avatar.png';
     this.status = 'default';
@@ -28,4 +28,4 @@ class MessageNotification {
   }
 }
 
-export default MessageNotification;
+export default MessageNotification; */

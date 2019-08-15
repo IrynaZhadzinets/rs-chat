@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Nickname from './Nickname';
 
 const Layout = ({ children }) => (
   <>
     <header>
-      <h3>Hello!</h3>
+      <Nickname />
     </header>
     <main className="chat">
       {children}
