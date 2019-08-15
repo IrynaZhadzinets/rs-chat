@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
+    "start": "webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
     "build": "webpack --config webpack.config.prod.babel.js"
   },
   "repository": {
